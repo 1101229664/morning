@@ -9,7 +9,7 @@ import random
 today = datetime.now()
 start_date = os.environ['START_DATE']
 city = os.environ['CITY']
-cityId = os.environ['CITYID']
+city_id = os.environ['CITYID']
 birthday = os.environ['BIRTHDAY']
 
 app_id = os.environ["APP_ID"]
@@ -20,7 +20,7 @@ template_id = os.environ["TEMPLATE_ID"]
 
 
 def get_weather():
-  url = "http://t.weather.itboy.net/api/weather/city/" + cityId
+  url = "http://t.weather.itboy.net/api/weather/city/" + city_id
   res = requests.get(url).json()
   weather = res['data']['forecast'][0]
   return weather['type'], weather['high'],weather['low'],weather['notice']
