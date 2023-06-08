@@ -109,6 +109,6 @@ def send_message(message):
     print(res.json())
     return res.json()['errmsg'] == 'ok'
 
-mes = f"城市：{city}\n天气：{wea}\n最低气温: {lowTemp}\n最高气温: {highTemp}\n今日建议：{notice}\n预计：{menstruation()}\n今天是我们恋爱的第{get_count()}天\n距离小宝生日还有{get_birthday()}天\n寄言： {get_words()}"
+mes = f"城市：{city}\n天气：{wea}\n最低气温: {lowTemp}\n最高气温: {highTemp}\n今日建议：{notice}\n预计：{get_aaa()}\n今天是我们恋爱的第{get_count()}天\n距离小宝生日还有{get_birthday()}天\n寄言： {get_words()}"
 print(mes)
 send_message(mes)
