@@ -66,7 +66,7 @@ data = {
     "birthday_left": {"value": get_birthday()}, 
     "words": {"value": get_words(), 
     "color": get_random_color()},
-    "menstruation": {"value": menstruation()}
+    "menst": {"value": menstruation()}
 }
 res = wm.send_template(user_id, template_id, data)
 print(res,data)
