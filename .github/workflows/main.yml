@@ -20,7 +20,7 @@ jobs:
       with:
         node-version: '16.x'
         
-      - name: sender
+    - name: sender
       uses: actions/setup-python@v2.4.0
       with:
         python-version: '3.7.3'
