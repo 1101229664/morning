@@ -15,10 +15,6 @@ jobs:
       with:
         ref: master
         
-    - name: Use Node.js 16.x
-      uses: actions/setup-node@v2
-      with:
-        node-version: '16.x'
         
     - name: sender
       uses: actions/setup-python@v2.4.0
