@@ -51,7 +51,7 @@ def menstruation():
   elif int_deleta == 29:
     return f'预计今天是月经期第1天哦~不要吃凉的~'
   else:
-    return f"预计月经期{29 - int_deleta}天后开始哦"
+    return f"预计月经期{29 - int_deleta}天后开始哦~"
 client = WeChatClient(app_id, app_secret)
 wm = WeChatMessage(client)
 wea, highTemp, lowTemp, notice = get_weather()
