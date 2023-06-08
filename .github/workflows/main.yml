@@ -22,7 +22,6 @@ jobs:
       with:
         python-version: '3.x'
         architecture: 'x64'
-        node-version: 16.x
     - run: pip install -r ./requirements.txt && python ./main.py
 
     env:
