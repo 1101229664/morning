@@ -47,11 +47,11 @@ def menstruation():
   delta = today - datetime.strptime('2023-05-14', "%Y-%m-%d")
   int_deleta = int(delta.days%30)
   if int_deleta < 4:
-    return f'预计今天是月经期第{ int_deleta + 2 }天哦~不要吃凉的~'
+    return f'预计今天是经期第{ int_deleta + 2 }天哦~不要吃凉的~'
   elif int_deleta == 29:
-    return f'预计今天是月经期第1天哦~不要吃凉的~'
+    return f'预计今天是经期第1天哦~不要吃凉的~'
   else:
-    return f"预计月经期{29 - int_deleta}天后开始哦~"
+    return f"预计经期{29 - int_deleta}天后开始哦~"
 client = WeChatClient(app_id, app_secret)
 wm = WeChatMessage(client)
 wea, highTemp, lowTemp, notice = get_weather()
