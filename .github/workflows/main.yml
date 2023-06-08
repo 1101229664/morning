@@ -16,9 +16,9 @@ jobs:
         ref: master
 
     - name: sender
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v2.4.0
       with:
-        python-version: '3.x'
+        python-version: '3.9'
         architecture: 'x64'
     - run: pip install -r ./requirements.txt && python ./main.py
 
