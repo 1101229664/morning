@@ -1,31 +1,35 @@
-name: Send message to girlfriend
-
+name: morning
 on:
   schedule:
-    - cron: '0 0 * * *' # 每天早上 0 点
+  - cron:  '0 0 * * *'
+  workflow_dispatch:
 
 jobs:
   send_message:
     runs-on: ubuntu-latest
+    name: send morning to your girlfriend
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: checkout
+      uses: actions/checkout@v3
+      with:
+        ref: master
+        
+        
+    - name: sender
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+        architecture: 'x64'
+        node-version: 16.x
+    - run: pip install -r ./requirements.txt && python ./main.py
 
-      - name: Install Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16.x'
-
-      - name: Install dependencies and run Python script
-        run: |
-          npm install
-          python main.py
-        env:
-          APP_ID: ${{ secrets.APP_ID }}
-          APP_SECRET: ${{ secrets.APP_SECRET }}
-          TEMPLATE_ID: ${{ secrets.TEMPLATE_ID }}
-          USER_ID: ${{ secrets.USER_ID }}
-          START_DATE: ${{ secrets.START_DATE }}
-          BIRTHDAY: ${{ secrets.BIRTHDAY }}
-          CITY: ${{ secrets.CITY }}
-          CITY_ID: ${{ secrets.CITY_ID }}
+    env:
+      APP_ID: ${{ secrets.APP_ID }}
+      APP_SECRET: ${{ secrets.APP_SECRET }}
+      TEMPLATE_ID: ${{ secrets.TEMPLATE_ID }}
+      USER_ID: ${{ secrets.USER_ID }}
+      START_DATE: ${{ secrets.START_DATE }}
+      BIRTHDAY: ${{ secrets.BIRTHDAY }}
+      CITY: ${{ secrets.CITY }}
+      CITY_ID: ${{ secrets.CITY_ID }}
