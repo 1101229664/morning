@@ -44,6 +44,7 @@ def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
 
 def menstruation():
+  return 123
   delta = today - datetime.strptime('2023-05-14', "%Y-%m-%d")
   int_deleta = int(delta.days%30)
   if int_deleta < 4:
