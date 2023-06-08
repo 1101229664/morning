@@ -52,8 +52,8 @@ def get_aaa():
     return f'今天是月经期第1天哦~不要吃凉的~'
   else:
     return f"月经期{29 - int_deleta}天后开始哦~"
-client = WeChatClient(app_id, app_secret)
-wm = WeChatMessage(client)
+# client = WeChatClient(app_id, app_secret)
+# wm = WeChatMessage(client)
 wea, highTemp, lowTemp, notice = get_weather()
 data = {
     "city": {"value": city, "color":get_random_color()}, 
@@ -67,5 +67,48 @@ data = {
     "words": {"value": get_words(), 
     "color": get_random_color()}
     }
-res = wm.send_template(user_id, template_id, data)
+# res = wm.send_template(user_id, template_id, data)
 print(res,data)
+
+
+def getImg():
+    res = requests.post('https://api.oioweb.cn/api/bing')
+    imgUrl = res.json()['result'][0]
+    return imgUrl['url']
+
+
+def send_message(message):
+    userid = 'FanXiGuo'  # userid
+    agentid = '1000002' # 应用ID
+    corpsecret = 'FKZWFTNuBWWM2N5C1bZVdH0H9_f8uPYR15RJdiDQAPk'  # Secret
+    corpid = 'ww6c480527c618c53a' # 企业ID
+    
+    res = requests.get(f"https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid={corpid}&corpsecret={corpsecret}")
+    access_token = res.json()['access_token']
+    
+    json_dic = {
+        "touser" : '@all',
+        "msgtype" : "news",
+        "agentid" : agentid,
+        "news" : {
+            "articles": [
+                {
+                    "title": "早上好~",
+                    "description": message,
+                    "picurl": getImg(),
+                }
+            ]
+        },
+        "enable_id_trans": 0,
+        "enable_duplicate_check": 0,
+        "duplicate_check_interval": 1800,
+        "debug": 1
+    }
+    json_str = json.dumps(json_dic, separators=(',', ':'))
+    res = requests.post(f"https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token={access_token}", data=json_str)
+    print(res.json())
+    return res.json()['errmsg'] == 'ok'
+
+mes = f"城市：{city}\n天气：{wea}\n最低气温: {lowTemp}\n最高气温: {highTemp}\n今日建议：{notice}\n预计：{menstruation()}\n今天是我们恋爱的第{get_count()}天\n距离小宝生日还有{get_birthday()}天\n寄言： {get_words()}"
+print(mes)
+send_message(mes)
