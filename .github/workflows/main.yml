@@ -17,7 +17,7 @@ jobs:
         
         
     - name: sender
-      uses: actions/setup-python@v2.4.0
+      uses: actions/setup-python@v2.2.2
       with:
         python-version: '3.7.3'
         architecture: 'x64'
