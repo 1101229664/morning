@@ -43,7 +43,15 @@ def get_words():
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
 
-
+def menstruation():
+  delta = today - datetime.strptime('2023-05-14', "%Y-%m-%d")
+  int_deleta = int(delta.days%30)
+  if int_deleta < 4:
+    return f'预计今天是月经期第{ int_deleta + 2 }天哦~不要吃凉的~'
+  elif int_deleta == 29:
+    return f'预计今天是月经期第1天哦~不要吃凉的~'
+  else:
+    return f"预计月经期{29 - int_deleta}天后开始哦~"
 client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
@@ -57,6 +65,8 @@ data = {
     "love_days": {"value": get_count()}, 
     "birthday_left": {"value": get_birthday()}, 
     "words": {"value": get_words(), 
-    "color": get_random_color()}}
+    "color": get_random_color()},
+    "menstruation": {"value": menstruation()}
+}
 res = wm.send_template(user_id, template_id, data)
 print(res,data)
