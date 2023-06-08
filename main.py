@@ -53,7 +53,6 @@ def menstruation():
   else:
     return f"预计月经期{29 - int_deleta}天后开始哦~"
 client = WeChatClient(app_id, app_secret)
-
 wm = WeChatMessage(client)
 wea, highTemp, lowTemp, notice = get_weather()
 data = {
@@ -67,6 +66,6 @@ data = {
     "words": {"value": get_words(), 
     "color": get_random_color()},
     "menst": {"value": menstruation()}
-}
+    }
 res = wm.send_template(user_id, template_id, data)
-print(res,data)
+print(data)
