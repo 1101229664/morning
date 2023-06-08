@@ -68,7 +68,7 @@ data = {
     "color": get_random_color()}
     }
 # res = wm.send_template(user_id, template_id, data)
-print(res,data)
+# print(res,data)
 
 
 def getImg():
