@@ -43,8 +43,7 @@ def get_words():
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
 
-def menstruation():
-  return 123
+def get_aaa():
   delta = today - datetime.strptime('2023-05-14', "%Y-%m-%d")
   int_deleta = int(delta.days%30)
   if int_deleta < 4:
@@ -62,7 +61,7 @@ data = {
     "highTemp": {"value": highTemp}, 
     "lowTemp": {"value": lowTemp}, 
     "notice" : {"value": notice},
-    "menst" : {"value": menstruation()},
+    "aaa" : {"value": get_aaa()},
     "love_days": {"value": get_count()}, 
     "birthday_left": {"value": get_birthday()}, 
     "words": {"value": get_words(), 
