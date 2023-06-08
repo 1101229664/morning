@@ -61,11 +61,11 @@ data = {
     "highTemp": {"value": highTemp}, 
     "lowTemp": {"value": lowTemp}, 
     "notice" : {"value": notice},
+    "menst" : {"value": menstruation()},
     "love_days": {"value": get_count()}, 
     "birthday_left": {"value": get_birthday()}, 
     "words": {"value": get_words(), 
-    "color": get_random_color()},
-    "menst": {"value": menstruation()}
+    "color": get_random_color()}
     }
 res = wm.send_template(user_id, template_id, data)
 print(data)
